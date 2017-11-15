@@ -2,15 +2,17 @@ dist: trusty
 sudo: required
 before_install:
   - sudo apt-get install git make gcc g++ diffstat texinfo chrpath libsdl-dev
+env:
+  global:
+    - TEMPLATECONF=${HOME}/poky/neutrino-hd/meta-hd51/example_neutrino
 script:
     - git clone -b rocko git://git.yoctoproject.org/poky
     - cd poky
     - git clone https://github.com/neutrino-hd/meta-neutrino.git
     - git clone https://github.com/neutrino-hd/meta-hd51.git
     - git clone https://github.com/neutrino-hd/meta-kodi.git
-    - . ./oe-init-build-env build-hd51-neutrino
-    - cd ..
-    - cp meta-hd51/example_neutrino/local.conf.sample build-hd51-neutrino/conf/local.conf
-    - cp meta-hd51/example_neutrino/bblayers.conf.sample build-hd51-neutrino/conf/bblayers.conf
+    - pwd
+    - echo "Templateconf ist ${TEMPLATECONF}"
+    - TEMPLATECONF=meta-hd51/example_neutrino
     - . ./oe-init-build-env build-hd51-neutrino
     - bitbake neutrino-image
