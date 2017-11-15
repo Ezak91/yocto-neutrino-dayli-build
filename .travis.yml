@@ -8,6 +8,9 @@ script:
     - git clone https://github.com/neutrino-hd/meta-neutrino.git
     - git clone https://github.com/neutrino-hd/meta-hd51.git
     - git clone https://github.com/neutrino-hd/meta-kodi.git
-    - export TEMPLATECONF=meta-hd51/example_neutrino
+    - . ./oe-init-build-env build-hd51-neutrino
+    - cd ..
+    - cp meta-hd51/example_neutrino/local.conf.sample build-hd51-neutrino/conf/local.conf
+    - cp meta-hd51/example_neutrino/bblayers.conf.sample build-hd51-neutrino/conf/bblayers.conf
     - . ./oe-init-build-env build-hd51-neutrino
     - bitbake neutrino-image
