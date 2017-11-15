@@ -1,10 +1,7 @@
-box: ruby
-before_install:
-  - sudo apt-get install git make gcc g++ diffstat texinfo chrpath libsdl-dev
-env:
-  global:
-    - TEMPLATECONF=/home/travis/build/Ezak91/yocto-neutrino-dayli-build/poky/meta-hd51/example_neutrino
-script:
+box: debian
+build:
+steps:
+  - script:
     - git clone -b rocko git://git.yoctoproject.org/poky
     - cd poky
     - git clone https://github.com/neutrino-hd/meta-neutrino.git
@@ -13,4 +10,4 @@ script:
     - pwd
     - echo "Templateconf ist ${TEMPLATECONF}"
     - . ./oe-init-build-env build-hd51-neutrino
-    - bitbake neutrino-image
+    - bitbake neutrino-image    
