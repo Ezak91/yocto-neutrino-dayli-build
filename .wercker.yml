@@ -2,7 +2,7 @@
 # Docker Hub https://registry.hub.docker.com/_/debian/
 # Read more about containers on our dev center
 # http://devcenter.wercker.com/docs/containers/index.html
-box: debian
+box: ezak/yocto_neutrino_bs
 # You can also use services such as databases. Read more on our dev center:
 # http://devcenter.wercker.com/docs/services/index.html
 # services:
@@ -20,20 +20,11 @@ build:
     # Read more about steps on our dev center:
     # http://devcenter.wercker.com/docs/steps/index.html
   steps:
-    - install-packages:
-        packages: git python3
     - script:
       name: build neutrino
       code: |
         # create buildfolder
-        apt-get update
-        mkdir yocto
-        cd yocto
-        git clone -b rocko git://git.yoctoproject.org/poky
-        cd poky
-        git clone https://github.com/neutrino-hd/meta-neutrino.git
-        git clone https://github.com/neutrino-hd/meta-hd51.git
-        git clone https://github.com/neutrino-hd/meta-kodi.git
+        cd poky/yocto
         export TEMPLATECONF=meta-hd51/example_kodi
         . ./oe-init-build-env build-hd51-neutrino
         bitbake neutrino-image
