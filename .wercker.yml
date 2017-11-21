@@ -21,7 +21,7 @@ build:
     # http://devcenter.wercker.com/docs/steps/index.html
   steps:
     - install-packages:
-        packages: git
+        packages: git python
     - script:
       name: build neutrino
       code: |
