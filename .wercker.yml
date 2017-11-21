@@ -25,7 +25,7 @@ build:
       code: |
         # create buildfolder
         su -s /bin/bash  user
-        cd /home/user/poky/yocto
+        cd /home/user/yocto/poky
         export TEMPLATECONF=meta-hd51/example_kodi
         . ./oe-init-build-env build-hd51-neutrino
         bitbake neutrino-image
