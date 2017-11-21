@@ -20,7 +20,9 @@ build:
     # Read more about steps on our dev center:
     # http://devcenter.wercker.com/docs/steps/index.html
   steps:
+    - install-packages:
+        packages: git    
     - script:
         name: clone poky repository
         code: |
-          git clone -b rocko git://git.yoctoproject.org/poky   
+          git clone -b rocko git://git.yoctoproject.org/poky
