@@ -5,4 +5,4 @@ build:
       name: build neutrino
       code: |
         cd /home/user/yocto/poky
-        su -s /bin/bash -c "export TEMPLATECONF=meta-hd51/example_kodi && . ./oe-init-build-env build-hd51-neutrino && bitbake neutrino-image" user
+        su -s /bin/bash -c "export TEMPLATECONF=meta-hd51/example_neutrino && . ./oe-init-build-env build-hd51-neutrino && bitbake neutrino-image" user
