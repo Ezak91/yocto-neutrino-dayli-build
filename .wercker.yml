@@ -21,11 +21,12 @@ build:
     # http://devcenter.wercker.com/docs/steps/index.html
   steps:
     - install-packages:
-        packages: git python2.7=2.7.12-2
+        packages: git python2.7
     - script:
       name: build neutrino
       code: |
         # create buildfolder
+        apt-get update
         mkdir yocto
         cd yocto
         git clone -b rocko git://git.yoctoproject.org/poky
