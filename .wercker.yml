@@ -23,9 +23,10 @@ build:
     - install-packages:
         packages: git
     - script:
+        name: create build directory
+        code: mkdir ${HOME}/yocto
+        name: change to build directory
+        code: cd ${HOME}/yocto
         name: clone poky repository
         code: |
-          git clone -b rocko git://git.yoctoproject.org/poky
-        name: cd
-        code : |
-          cd poky
+          git clone -b rocko git://git.yoctoproject.org/poky ${HOME}/poky
