@@ -23,13 +23,16 @@ build:
     - install-packages:
         packages: git
     - script:
-        name: create build directory
-        code: |
-          mkdir ${HOME}/yocto
-        name: change to build directory
-        code: |
-          cd ${HOME}/yocto
-        name: |
-          clone poky repository
-        code: |
-          git clone -b rocko git://git.yoctoproject.org/poky ${HOME}/poky
+      name: build neutrino
+      code: |
+        # create buildfolder
+        mkdir yocto
+        cd yocto
+        git clone -b rocko git://git.yoctoproject.org/poky
+        cd poky
+        git clone https://github.com/neutrino-hd/meta-neutrino.git
+        git clone https://github.com/neutrino-hd/meta-hd51.git
+        git clone https://github.com/neutrino-hd/meta-kodi.git
+        export TEMPLATECONF=meta-hd51/example_kodi
+        . ./oe-init-build-env build-hd51-neutrino
+        bitbake neutrino-image
