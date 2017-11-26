@@ -1,17 +1,6 @@
-dist: trusty
-sudo: required
-before_install:
-  - sudo apt-get install git make gcc g++ diffstat texinfo chrpath libsdl-dev
+dist: ezak/yoco_neutrino_bs
 env:
   global:
-    - TEMPLATECONF=/home/travis/build/Ezak91/yocto-neutrino-dayli-build/poky/meta-hd51/example_neutrino
+    - TEMPLATECONF=/home/user/poky/poky/meta-hd51/example_neutrino
 script:
-    - git clone -b rocko git://git.yoctoproject.org/poky
-    - cd poky
-    - git clone https://github.com/neutrino-hd/meta-neutrino.git
-    - git clone https://github.com/neutrino-hd/meta-hd51.git
-    - git clone https://github.com/neutrino-hd/meta-kodi.git
-    - pwd
-    - echo "Templateconf ist ${TEMPLATECONF}"
-    - . ./oe-init-build-env build-hd51-neutrino
-    - bitbake neutrino-image
+    - echo `pwd`
