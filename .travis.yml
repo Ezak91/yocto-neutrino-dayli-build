@@ -3,4 +3,4 @@ env:
   global:
     - TEMPLATECONF=/home/user/poky/poky/meta-hd51/example_neutrino
 script:
-    - echo `pwd`
+    - echo `ls`
