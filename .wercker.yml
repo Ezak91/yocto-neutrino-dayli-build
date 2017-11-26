@@ -1,8 +1,14 @@
-box: ezak/yocto_neutrino_bs
+box: ezak/yoco_neutrino_bs:20171124
 build:
   steps:
     - script:
       name: build neutrino
       code: |
         cd /home/user/yocto/poky
+        cd meta-neutrino
+        git pull
+        cd ..
+        cd meta-hd51
+        git pull
+        cd ..
         su -s /bin/bash -c "export TEMPLATECONF=meta-hd51/example_neutrino && . ./oe-init-build-env build-hd51-neutrino && bitbake neutrino-image" user
