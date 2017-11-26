@@ -1,6 +1,13 @@
-dist: ezak/yoco_neutrino_bs
+dist: trusty
+sudo: false
+services:
+  - docker
+before_script:
+  - docker pull ezak/yoco_neutrino_bs
 env:
   global:
     - TEMPLATECONF=/home/user/poky/poky/meta-hd51/example_neutrino
 script:
+    - docker run -it ezak/yoco_neutrino_bs
+    - echo `pwd`
     - echo `ls`
